@@ -20,6 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        //je veux loader un composant js
+        //avec une vue partielle
+        $data['partialViews']['vueHorloge'] = $this->load->view('horloge/horloge',array(), true);
+
+		$this->load->view('index', $data);
 	}
 }
