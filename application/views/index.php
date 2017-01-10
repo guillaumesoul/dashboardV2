@@ -6,11 +6,11 @@
 <head>
     <meta charset="utf-8">
 
-    <title>DASHBOARD</title>
+    <title>DASHBOARDV2</title>
     <meta name="description" content="DASHBOARD">
     <meta name="author" content="SitePoint">
 
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/app.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -24,5 +24,4 @@
 </body>
 </html>
 
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/assets/js/app.min.js"></script>

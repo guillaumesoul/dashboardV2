@@ -4,55 +4,40 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
         sass: {
-            dev: {
+            dist: {
                 files: {
-                    // destination         // source file
-                    'assets/css/styles.css' : 'assets/src/css/horloge.scss'
+                    'assets/css/src/main.css': 'assets/css/src/sass/main.scss',
+                    'assets/css/src/horloge.css': 'assets/css/src/sass/horloge.scss',
                 }
             }
         },
 		concat:{
 			app_js:{
 				src: [
-					'./assets/plugins/jquery/dist/jquery.min.js',
-					'./assets/plugins/jquery-ui/jquery-ui.min.js',
-					'./assets/plugins/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-					'./assets/js/src/contact.js',
-					'./assets/js/src/app.js'
+					'./bower_components/jquery/dist/jquery.min.js',
+					'./bower_components/bootstrap/dist/js/bootstrap.min.js',
+					'./assets/plugins/flipclock/flipclock.min.js',
+					'./assets/js/src/horloge.js'
 				],
 				dest: './assets/js/app.min.js'
-			}
-		},
-		uglify:{
-			app_js: {
-				options: {
-					mangle: {
-						except: [
-							'./assets/plugins/jquery/dist/jquery.min.js',
-							'./assets/plugins/jquery/dist/jquery.min.js',
-							'./assets/plugins/jquery-ui/jquery-ui.min.js',
-							'./assets/plugins/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-						]
-					}
-				},
-				files: {
-					'./assets/js/app.min.js': [
-						'./assets/plugins/jquery/dist/jquery.min.js',
-						'./assets/plugins/jquery-ui/jquery-ui.min.js',
-						'./assets/plugins/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-						'./assets/js/src/contact.js',
-						'./assets/js/src/app.js'
-					]
-				}
-			}
+			},
+            app_css: {
+				src: [
+                    'bower_components/bootstrap/dist/css/bootstrap.min.css"',
+                    './assets/plugins/flipclock/flipclock.css',
+                    'assets/css/src/main.css',
+                    'assets/css/src/horloge.css',
+				],
+                dest: './assets/css/app.css'
+            }
 		},
 		watch:{
 			front_css:{
-				files: ['./assets/css/src/*.scss'],
-				tasks: ['front_css']
+				files: ['./assets/src/css/*.scss'],
+				tasks: ['css']
 			},
 			app_js:{
-				files: ['./assets/js/src/*.js'],
+				files: ['./assets/src/js/*.js'],
 				tasks: ['app_js']
 			}
 		}
@@ -63,6 +48,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('front_css', ['sass:dev']);
-	grunt.registerTask('app_js', ['concat:app_js', 'uglify:app_js']);
+    grunt.registerTask('css', ['compile_css', 'concat_css']);
+    grunt.registerTask('app_js', ['concat:app_js']);
+	grunt.registerTask('compile_css', ['sass']);
+	grunt.registerTask('concat_css', ['concat:app_css']);
+
 };

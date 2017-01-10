@@ -22,7 +22,8 @@ class Welcome extends CI_Controller {
 	{
         //je veux loader un composant js
         //avec une vue partielle
-        $data['partialViews']['vueHorloge'] = $this->load->view('horloge/horloge',array(), true);
+        $data['partialViews']['horloge'] = $this->load->view('horloge/horloge',array(), true);
+        $data['partialViews']['meteo'] = $this->load->view('meteo/meteo',array(), true);
 
 		$this->load->view('index', $data);
 	}

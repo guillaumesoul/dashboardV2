@@ -1,1 +1,1 @@
-<div id="horloge">coucou de ma vue horloge</div>
+<div class="clock" style="margin:2em;"></div>
