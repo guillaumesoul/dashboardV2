@@ -24,6 +24,7 @@ class Welcome extends CI_Controller {
         //avec une vue partielle
         $data['partialViews']['horloge'] = $this->load->view('horloge/horloge',array(), true);
         $data['partialViews']['meteo'] = $this->load->view('meteo/meteo',array(), true);
+        $data['partialViews']['news'] = $this->load->view('news/news',array(), true);
 
 		$this->load->view('index', $data);
 	}
